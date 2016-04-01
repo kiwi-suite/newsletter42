@@ -37,12 +37,14 @@ class UserSubscriptionSelector extends AbstractSelector
     public function getResult()
     {
         $config = $this->getServiceManager()->get('Config');
-        $apiKey = $config['mailchimp']['api_key'];
+        $config = $config['newsletter']['mailchimp'];
+
+        $apiKey = $config['api_key'];
 
         $id = md5(strtolower($this->email));
 
         $subscribed = [];
-        foreach ($config['mailchimp']['lists'] as $name => $list) {
+        foreach ($config['lists'] as $name => $list) {
             $response = $this->send("lists/{$list}/members/{$id}", $apiKey);
             if ($response['status'] != 404 && $response['status'] == 'subscribed') {
                 $subscribed[] = $name;
