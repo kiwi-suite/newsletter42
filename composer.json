@@ -1,0 +1,19 @@
+{
+    "name": "fruit42/newsletter42",
+    "type": "zend-module",
+    "require": {
+        "php": ">=5.5",
+        "ext-intl" : "*",
+        "composer/installers": "~1.0",
+        "zendframework/zendframework": "^2.5",
+        "zendframework/zend-http": "^2.5",
+        "fruit42/core42": "2.0.*"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": {
+            "Newsletter42": "src/"
+        }
+    }
+}
